@@ -1,0 +1,1 @@
+cmake ./CMakelists.txt -B ./bld

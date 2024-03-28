@@ -1,0 +1,20 @@
+cmake_minimum_required(VERSION 3.25.0)
+project(Intel_Event_Code LANGUAGES CXX)
+
+set(CMAKE_CXX_STANDARD 20)
+set(CMAKE_BUILD_TYPE "Release")
+
+FILE(GLOB SRCFILES src/*.cpp src/*.h src/*.hpp)
+
+find_package( IntelDPCPP REQUIRED )
+
+find_package( OpenCV REQUIRED )
+include_directories(${Open_CV_INCLUDE_DIRS} )
+
+
+add_executable(${PROJECT_NAME} ${SRCFILES})
+
+target_link_libraries(${PROJECT_NAME} ${OpenCV_LIBS})
+
+#target_link_libraries(${PROJECT_NAME} tbb)
+# For linux cause std::algorithm par_unseq needs Intel TBB for multithreading cause Linux moment.
